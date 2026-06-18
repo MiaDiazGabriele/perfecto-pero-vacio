@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Qué es real? — Perfecto pero vacío</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Abril+Fatface&family=Special+Elite&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Caveat:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Textura de grano fotográfico -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- Cursor personalizado (se oculta en touch) -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- Marca de agua fija / botón de inicio -->
+  <div class="watermark" id="btnLogo" role="button" tabindex="0" title="Volver al inicio">«Perfecto pero <em>vacío»</em></div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 0 — ÁLBUM (entrada animada)
+       ══════════════════════════════════════════════ -->
+  <section id="screen-album" class="screen active">
+    <div class="album-scene" id="albumScene">
+      <img src="img/tapa-album-mockup.png" class="album-mockup" alt="Álbum de fotos Recuerdos">
+    </div>
+    <button class="album-open-btn" id="btnOpenAlbum">Entrar</button>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 1 — INTRO
+       ══════════════════════════════════════════════ -->
+  <section id="screen-intro" class="screen">
+
+    <!-- Grid decorativo de fondo (generado por JS) -->
+    <div class="intro-bg-grid" id="introBgGrid" aria-hidden="true"></div>
+
+    <!-- Fondo parallax — fotos y stickers de la galería -->
+    <div class="intro-parallax" aria-hidden="true">
+      <div class="prlx-layer" data-factor="0.012">
+        <img class="prlx-photo" style="--px:4%;--py:8%;--pr:-9deg;--pw:clamp(170px,22vw,270px)" src="img/n1-real-1.jpeg" alt="">
+        <img class="prlx-photo" style="--px:68%;--py:52%;--pr:7deg;--pw:clamp(150px,19vw,230px)" src="img/n2-real-1.jpeg" alt="">
+        <img class="prlx-sticker" style="--px:82%;--py:6%;--pr:-10deg;--pw:clamp(58px,7.5vw,95px)" src="img/corazon.png" alt="">
+      </div>
+      <div class="prlx-layer" data-factor="0.026">
+        <img class="prlx-photo" style="--px:78%;--py:22%;--pr:11deg;--pw:clamp(135px,17vw,200px)" src="img/n1-ia-1.jpeg" alt="">
+        <img class="prlx-photo" style="--px:14%;--py:60%;--pr:-5deg;--pw:clamp(145px,18vw,215px)" src="img/n3-real-2.jpeg" alt="">
+        <img class="prlx-sticker" style="--px:52%;--py:82%;--pr:13deg;--pw:clamp(52px,6.5vw,82px)" src="img/estrellas.png" alt="">
+      </div>
+      <div class="prlx-layer" data-factor="0.044">
+        <img class="prlx-photo" style="--px:38%;--py:3%;--pr:-7deg;--pw:clamp(115px,14vw,170px)" src="img/n3-ia-2.jpeg" alt="">
+        <img class="prlx-sticker" style="--px:2%;--py:38%;--pr:15deg;--pw:clamp(68px,8.5vw,105px)" src="img/papel_rasgado.png" alt="">
+        <img class="prlx-sticker" style="--px:86%;--py:65%;--pr:-8deg;--pw:clamp(80px,9.5vw,125px)" src="img/washi_azul.png" alt="">
+      </div>
+    </div>
+
+    <!-- Stickers decorativos del intro -->
+    <img src="img/deco-estrella-rosa.png"    class="sticker sticker-deco" style="top:8%;right:6%;width:clamp(72px,9vw,120px);transform:rotate(14deg)"   aria-hidden="true" alt="">
+    <img src="img/deco-camara.png"           class="sticker sticker-deco" style="bottom:12%;left:4%;width:clamp(90px,11.5vw,148px);transform:rotate(-10deg)" aria-hidden="true" alt="">
+    <img src="img/deco-destello-verde.png"   class="sticker sticker-deco" style="top:30%;left:3%;width:clamp(24px,2.8vw,38px);transform:rotate(5deg)"   aria-hidden="true" alt="">
+    <img src="img/deco-asterisco-violeta.png" class="sticker sticker-deco" style="bottom:22%;right:4%;width:clamp(36px,4.5vw,58px);transform:rotate(-7deg)" aria-hidden="true" alt="">
+
+    <div class="intro-content">
+      <!-- Categoría — editá libremente -->
+      <p class="eyebrow">Post-fotografía · IA · Memoria</p>
+
+      <!-- TÍTULO PRINCIPAL — letras PNG de collage (p-e-r-f-e-c-t)
+           Para ajustar cada letra: editá --lr (rotación en grados) y --ly (offset vertical)
+           directamente en cada span.ltr de abajo.
+           Para cambiar el tamaño de las letras: editá height en .ltr img (styles.css).
+           Para ocultar una letra individual: añadí style="display:none" a su span.ltr. -->
+      <div class="perfect-title" role="heading" aria-level="1" aria-label="perfecto, pero vacío">
+        <div class="perfect-word">
+          <span class="ltr" style="--lr:-4deg;--ly:2px"><img src="img/perfect_p.png" alt=""></span>
+          <span class="ltr" style="--lr:2.5deg;--ly:-3px"><img src="img/perfect_e1.png" alt=""></span>
+          <span class="ltr" style="--lr:-1.5deg;--ly:1px"><img src="img/perfect_r.png" alt=""></span>
+          <span class="ltr" style="--lr:5deg;--ly:-2px"><img src="img/perfect_f.png" alt=""></span>
+          <span class="ltr" style="--lr:-3deg;--ly:3px"><img src="img/perfect_e2.png" alt=""></span>
+          <span class="ltr" style="--lr:1.5deg;--ly:-1px"><img src="img/perfect_c.png" alt=""></span>
+          <span class="ltr" style="--lr:-4.5deg;--ly:2px"><img src="img/perfect_t.png" alt=""></span>
+          <span class="ltr" style="--lr:-2deg;--ly:1px"><img src="img/letra-O.png" alt=""></span>
+        </div>
+        <span class="perfect-but">pero vacío</span>
+      </div>
+
+      <!-- Descripción — editá libremente -->
+      <p class="intro-sub">Todas las imágenes que ves pueden ser reales o generadas por IA.</p>
+      <p class="intro-badge">Explorá la galería, elegí una y arriesgá tu veredicto.</p>
+
+      <p class="intro-hint">Hay detalles que delatan a la IA. ¿Podés verlos?</p>
+
+      <button class="btn-primary" id="btnStart">Comenzar</button>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 1.5 — PASOS (intermedia)
+       ══════════════════════════════════════════════ -->
+  <section id="screen-steps" class="screen">
+    <div class="steps-content">
+      <p class="eyebrow">¿Cómo funciona?</p>
+      <div class="steps-list">
+        <div class="step-item">
+          <span class="prop-num">01</span>
+          <p>Imágenes reales y generadas por IA conviven en la galería</p>
+        </div>
+        <div class="step-item">
+          <span class="prop-num">02</span>
+          <p>Elegí una imagen y decidí: ¿real o generada por IA?</p>
+        </div>
+        <div class="step-item">
+          <span class="prop-num">03</span>
+          <p>Descubrí el detalle que delata al algoritmo</p>
+        </div>
+      </div>
+      <button class="btn-primary" id="btnStartGame">Empezar a jugar →</button>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 2 — GALERÍA
+       ══════════════════════════════════════════════ -->
+  <section id="screen-gallery" class="screen">
+    <div class="gallery-wrap">
+
+      <header class="gallery-header">
+        <div>
+          <!-- Nivel actual — actualizado por JS -->
+          <p class="gallery-level-badge" id="levelBadge">Nivel 1 de 3</p>
+          <!-- TÍTULO GALERÍA — letras recortadas
+               Para reemplazar por PNG: misma técnica que el título intro.
+               <img src="img/titulo-mirar.png" alt="Mirar sin certeza" class="ransom-img gallery-title">
+          -->
+          <div class="ransom-png gallery-title" role="heading" aria-level="2" aria-label="Mirar sin certeza">
+            <span class="ltr" style="--lr:-3deg;--ly:1px"><img src="img/letra-M.png" alt=""></span>
+            <span class="ltr" style="--lr:2deg;--ly:-2px"><img src="img/letra-i-1.png" alt=""></span>
+            <span class="ltr" style="--lr:-1.5deg;--ly:1px"><img src="img/letra-r.png" alt=""></span>
+            <span class="ltr" style="--lr:3.5deg;--ly:-1px"><img src="img/letra-a-1.png" alt=""></span>
+            <span class="ltr" style="--lr:-2.5deg;--ly:2px"><img src="img/letra-r.png" alt=""></span>
+            <span class="ltr-space" aria-hidden="true"></span>
+            <span class="ltr" style="--lr:4deg;--ly:-2px"><img src="img/letra-S.png" alt=""></span>
+            <span class="ltr" style="--lr:-2deg;--ly:1px"><img src="img/letra-i-2.png" alt=""></span>
+            <span class="ltr" style="--lr:1.5deg;--ly:-1px"><img src="img/letra-n.png" alt=""></span>
+            <span class="ltr-space" aria-hidden="true"></span>
+            <span class="ltr" style="--lr:-3.5deg;--ly:1px"><img src="img/letra-c.png" alt=""></span>
+            <span class="ltr" style="--lr:2.5deg;--ly:-2px"><img src="img/letra-e-1.png" alt=""></span>
+            <span class="ltr" style="--lr:-1deg;--ly:2px"><img src="img/letra-r.png" alt=""></span>
+            <span class="ltr" style="--lr:4.5deg;--ly:-1px"><img src="img/letra-t.png" alt=""></span>
+            <span class="ltr" style="--lr:-2deg;--ly:1px"><img src="img/letra-e-2.png" alt=""></span>
+            <span class="ltr" style="--lr:3deg;--ly:-2px"><img src="img/letra-z.png" alt=""></span>
+            <span class="ltr" style="--lr:-1.5deg;--ly:2px"><img src="img/letra-a-2.png" alt=""></span>
+          </div>
+          <p class="gallery-sub" id="gallerySub">Elegí una imagen y arriesgá tu veredicto. Las pistas aparecen al revelar.</p>
+        </div>
+        <div class="gallery-meta">
+          <span class="progress-txt" id="progressText">0 / 6 reveladas</span>
+          <!-- Aparece automáticamente cuando todas están respondidas -->
+          <button class="btn-results hidden" id="btnShowResult">Ver resultados →</button>
+        </div>
+        <!-- STICKER washi_azul — tape decorativo (oculto: quedaba raro junto al título) -->
+        <img src="img/washi_azul.png" class="sticker sticker-washi" aria-hidden="true" alt="" style="display:none">
+      </header>
+
+      <!-- Grilla de tarjetas — llenada por JavaScript -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <!-- STICKER film_negativo — esquina superior derecha, temático.
+           Para ocultarlo: añadí style="display:none" -->
+      <img src="img/film_negativo.png" class="sticker sticker-film" aria-hidden="true" alt="">
+
+      <!-- Stickers decorativos de la galería -->
+      <img src="img/deco-corazon-rosa.png"    class="sticker sticker-deco" style="bottom:22%;right:2%;width:clamp(76px,9.5vw,116px);transform:rotate(10deg)"  aria-hidden="true" alt="">
+      <img src="img/deco-interrogacion.png"   class="sticker sticker-deco" style="bottom:36%;left:1%;width:clamp(32px,3.5vw,50px);transform:rotate(-8deg)"  aria-hidden="true" alt="">
+      <img src="img/deco-estrellas-amarillas.png" class="sticker sticker-deco" style="bottom:5%;right:3%;width:clamp(52px,6.5vw,80px);transform:rotate(-12deg)" aria-hidden="true" alt="">
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 3 — FOCO + VEREDICTO
+       ══════════════════════════════════════════════ -->
+  <section id="screen-focus" class="screen">
+    <div class="focus-layout">
+
+      <!-- Mitad izquierda: imagen con efecto bloom / drain -->
+      <div class="stage-area" id="stageArea">
+
+        <!-- Decoraciones que emergen al confirmar una foto real (bloom) -->
+        <div class="deco deco-1" id="deco1" aria-hidden="true"></div>
+        <div class="deco deco-2" id="deco2" aria-hidden="true"></div>
+        <div class="deco deco-3" id="deco3" aria-hidden="true"></div>
+        <div class="deco deco-4" id="deco4" aria-hidden="true"></div>
+
+        <!-- Marco polaroid + aviso de zoom centrado debajo -->
+        <div class="stage-wrap">
+          <div class="stage-frame" id="stageFrame">
+            <!-- El fondo es el gradiente / imagen real — seteado por JS -->
+            <div class="stage-photo" id="stagePhoto"></div>
+            <!-- Título + leyenda — seteados por JS -->
+            <div class="stage-title" id="stageTitle"></div>
+            <div class="stage-caption" id="stageCaption"></div>
+          </div>
+          <p class="zoom-hint">🔍 Tocá la foto para ampliarla</p>
+        </div>
+
+        <!-- Stickers decorativos del foco -->
+        <img src="img/deco-carita-feliz.png" class="sticker sticker-deco" style="bottom:8%;left:5%;width:clamp(68px,8.5vw,108px);transform:rotate(-12deg)" aria-hidden="true" alt="">
+        <img src="img/deco-exclamaciones.png" class="sticker sticker-deco" style="top:6%;right:4%;width:clamp(26px,3vw,42px);transform:rotate(8deg)" aria-hidden="true" alt="">
+
+      </div>
+
+      <!-- Mitad derecha: pregunta y feedback -->
+      <div class="focus-panel">
+
+        <button class="btn-back" id="btnBack">← Galería</button>
+
+        <!-- Etiqueta de contexto ("imagen 01 · retrato") — seteada por JS -->
+        <p class="panel-kick" id="panelKick">imagen · veredicto</p>
+
+        <!-- Bloque de pregunta (se oculta al responder) -->
+        <div id="questionBlock">
+          <h3 class="panel-question">¿Es un recuerdo real<br>o lo generó una IA?</h3>
+          <div class="choice-group">
+            <button class="choice-btn choice-real" id="btnReal">
+              <span class="choice-icon">○</span>
+              Es una foto real
+            </button>
+            <button class="choice-btn choice-ia" id="btnIA">
+              <span class="choice-icon">▪</span>
+              La generó una IA
+            </button>
+          </div>
+        </div>
+
+        <!-- Bloque de veredicto (oculto hasta que se responde) -->
+        <div id="verdictBlock" class="hidden">
+          <!-- Etiqueta "Registro real" / "Generada por IA" — seteada por JS -->
+          <span class="verdict-tag" id="verdictTag"></span>
+
+          <!-- Explicación detallada — seteada desde IMAGES en script.js -->
+          <p class="verdict-exp" id="verdictExp"></p>
+
+          <!-- Tags de pistas — generados desde IMAGES.clues -->
+          <div class="clue-list" id="clueList"></div>
+
+          <!-- Frase reflexiva — seteada desde IMAGES.moral -->
+          <p class="verdict-moral" id="verdictMoral"></p>
+
+          <div class="verdict-actions">
+            <button class="btn-primary" id="btnNext">Siguiente imagen →</button>
+            <button class="btn-outline" id="btnGallery">Ver galería</button>
+          </div>
+        </div>
+
+        <!-- Marcador de aciertos (siempre visible en panel) -->
+        <div class="panel-score">
+          Aciertos: <strong id="panelScoreNum">0</strong> / <span id="panelScoreTotal">6</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 4 — TRANSICIÓN ENTRE NIVELES
+       ══════════════════════════════════════════════ -->
+  <section id="screen-levelup" class="screen">
+    <div class="levelup-content">
+      <!-- "Nivel 1 completado" — seteado por JS -->
+      <span class="levelup-eyebrow" id="levelupEyebrow">Nivel 1 completado</span>
+      <!-- Frase de transición — viene de LEVELS[n].transition en script.js -->
+      <p class="levelup-phrase" id="levelupPhrase"></p>
+      <!-- Aciertos en ese nivel -->
+      <p class="levelup-stat" id="levelupStat"></p>
+      <button class="btn-primary" id="btnLevelContinue">Continuar →</button>
+    </div>
+    <!-- STICKER papel_rasgado — esquina inferior izquierda.
+         Para ocultarlo: añadí style="display:none" -->
+    <img src="img/papel_rasgado.png" class="sticker sticker-papel-rasgado" aria-hidden="true" alt="">
+    <!-- Stickers decorativos del levelup -->
+    <img src="img/deco-mono.png"           class="sticker sticker-deco" style="top:6%;right:5%;width:clamp(60px,8vw,96px);transform:rotate(6deg)"   aria-hidden="true" alt="">
+    <img src="img/deco-estrella-verde.png" class="sticker sticker-deco" style="bottom:8%;right:6%;width:clamp(44px,5.5vw,68px);transform:rotate(-9deg)" aria-hidden="true" alt="">
+    <img src="img/deco-globo-corazon.png"  class="sticker sticker-deco" style="top:15%;left:3%;width:clamp(50px,6.5vw,80px);transform:rotate(-14deg)" aria-hidden="true" alt="">
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 5 — RESULTADO FINAL
+       ══════════════════════════════════════════════ -->
+  <section id="screen-result" class="screen">
+    <div class="result-content">
+
+      <p class="result-eyebrow">Resultado final</p>
+
+      <!-- STICKER torta — esquina superior izquierda, festivo -->
+      <img src="img/torta.png" class="sticker sticker-torta" aria-hidden="true" alt="">
+
+      <!-- Puntaje grande — seteado por JS -->
+      <div class="result-score" id="resultScore">0</div>
+      <p class="result-score-label">
+        de <span id="resultTotal">6</span> imágenes identificadas correctamente
+      </p>
+
+      <!-- Mensaje principal según puntaje — seteado por JS -->
+      <h2 class="result-message" id="resultMessage"></h2>
+
+      <!-- Subtexto — seteado por JS -->
+      <p class="result-sub" id="resultSub"></p>
+
+      <!-- Tarjeta de arquetipo — aparece después del puntaje -->
+      <div class="archetype-section hidden" id="archetypeSection">
+        <div class="archetype-card" id="archetypeCard">
+          <img class="ac-deco ac-deco-1" id="acDeco1" src="" aria-hidden="true" alt="">
+          <img class="ac-deco ac-deco-2" id="acDeco2" src="" aria-hidden="true" alt="">
+          <div class="ac-tape" id="acTape" aria-hidden="true"></div>
+          <div class="ac-inner">
+            <span class="ac-brand">¿Qué es real?</span>
+            <div class="ac-score-row">
+              <span class="ac-score-num" id="acScoreNum">—</span>
+              <span class="ac-score-of">/9</span>
+            </div>
+            <p class="ac-archetype-label">tu arquetipo</p>
+            <h3 class="ac-archetype-name" id="acArchName"></h3>
+            <p class="ac-archetype-quote" id="acArchQuote"></p>
+          </div>
+          <div class="ac-card-footer">Post-fotografía · IA · Memoria</div>
+        </div>
+        <button class="btn-outline ac-dl-btn" id="btnDownloadCard">↓ Descargar tarjeta</button>
+      </div>
+
+      <!-- Caja de lección sobre post-fotografía — texto seteado por JS -->
+      <div class="result-lesson">
+        <img src="img/nota_cinta.png" class="sticker sticker-nota-cinta" aria-hidden="true" alt="">
+        <span class="lesson-label">Post-fotografía</span>
+        <p id="resultLesson"></p>
+      </div>
+
+      <!-- Tarjeta imagen de resultado — seteada por JS según puntaje -->
+      <p class="result-score-line" id="resultScoreLine"></p>
+      <img class="result-card-img" id="resultCardImg" src="" alt="">
+
+      <button class="btn-primary" id="btnRestart">Volver a intentar</button>
+
+    </div>
+
+    <!-- Stickers decorativos del resultado -->
+    <img src="img/deco-flor-rosa.png"          class="sticker sticker-deco" style="top:4%;left:3%;width:clamp(54px,7vw,88px);transform:rotate(-11deg)"  aria-hidden="true" alt="">
+    <img src="img/deco-diamantes.png"           class="sticker sticker-deco" style="top:8%;right:3%;width:clamp(46px,6vw,74px);transform:rotate(8deg)"   aria-hidden="true" alt="">
+    <img src="img/deco-corazones-trio.png"      class="sticker sticker-deco" style="bottom:10%;left:2%;width:clamp(58px,7.5vw,94px);transform:rotate(-6deg)" aria-hidden="true" alt="">
+    <img src="img/deco-exclamaciones-papel.png" class="sticker sticker-deco" style="bottom:6%;right:2%;width:clamp(48px,6vw,76px);transform:rotate(12deg)"  aria-hidden="true" alt="">
+    <img src="img/deco-estrella-capas.png"      class="sticker sticker-deco" style="top:45%;right:1%;width:clamp(38px,4.5vw,58px);transform:rotate(-5deg)"  aria-hidden="true" alt="">
+
+  </section>
+
+
+  <!-- Timer de nivel 3 — barra fija en la parte superior del viewport -->
+  <div class="timer-wrap hidden" id="timerWrap" aria-hidden="true">
+    <div class="timer-bar" id="timerBar"></div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       OVERLAY DE REVELACIÓN — fullscreen dramático
+       ══════════════════════════════════════════════ -->
+  <div id="reveal-overlay" class="rov" role="dialog" aria-modal="true" aria-label="Revelación de la imagen">
+
+    <!-- Fondo oscuro con vignette -->
+    <div class="rov-backdrop" aria-hidden="true"></div>
+
+    <div class="rov-inner">
+
+      <!-- ── Zona imagen ── -->
+      <div class="rov-stage" id="rovStage">
+        <!-- Luz ambiental cálida (aparece al revelar una foto real) -->
+        <div class="rov-warmglow" id="rovWarmGlow" aria-hidden="true"></div>
+
+        <!-- Decoraciones bloom del overlay — llenadas por JS en revelación real.
+             Para stickers propios: reemplazá el innerHTML en fillRevealDecos() de script.js -->
+        <div class="rov-deco rov-deco-1" id="rovDeco1" aria-hidden="true"></div>
+        <div class="rov-deco rov-deco-2" id="rovDeco2" aria-hidden="true"></div>
+        <div class="rov-deco rov-deco-3" id="rovDeco3" aria-hidden="true"></div>
+        <div class="rov-deco rov-deco-4" id="rovDeco4" aria-hidden="true"></div>
+        <div class="rov-deco rov-deco-5" id="rovDeco5" aria-hidden="true"></div>
+        <div class="rov-deco rov-deco-6" id="rovDeco6" aria-hidden="true"></div>
+
+        <!-- Marco polaroid -->
+        <div class="rov-frame" id="rovFrame">
+          <!-- Foto / gradiente + capas de glitch -->
+          <div class="rov-photowrap">
+            <div class="rov-photo"  id="rovPhoto"></div>
+            <div class="rov-gl rov-gl-r" id="rovGlR" aria-hidden="true"></div>
+            <div class="rov-gl rov-gl-b" id="rovGlB" aria-hidden="true"></div>
+            <div class="rov-scanlines"   id="rovScanlines" aria-hidden="true"></div>
+          </div>
+          <!-- Título + leyenda -->
+          <div class="rov-title" id="rovTitle"></div>
+          <div class="rov-cap"   id="rovCap"></div>
+        </div>
+      </div>
+
+      <!-- ── Zona texto ── -->
+      <div class="rov-panel">
+        <!-- "¡Acertaste!" / "La IA te engañó." -->
+        <div class="rov-result-line" id="rovResultLine">
+          <span class="rov-result-icon" id="rovResultIcon"></span>
+          <span class="rov-result-text" id="rovResultText"></span>
+        </div>
+
+        <!-- Badge "Registro real" / "Generada por IA" -->
+        <span class="rov-tag" id="rovTag"></span>
+
+        <!-- Explicación -->
+        <p class="rov-exp" id="rovExp"></p>
+
+        <!-- Tags de pistas -->
+        <div class="rov-clues" id="rovClues"></div>
+
+        <!-- Frase reflexiva -->
+        <blockquote class="rov-moral" id="rovMoral"></blockquote>
+
+        <!-- Acciones -->
+        <div class="rov-actions" id="rovActions">
+          <button class="btn-primary" id="rovBtnNext">Siguiente imagen →</button>
+          <button class="btn-outline"  id="rovBtnGallery">Ver galería</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Lightbox — zoom interactivo de imagen -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+    <button class="lb-close" id="lbClose" aria-label="Cerrar">✕</button>
+    <div class="lb-img-wrap" id="lbImgWrap">
+      <img class="lb-img" id="lbImg" src="" alt="Vista ampliada" draggable="false">
+    </div>
+  </div>
+
+  <!-- Flash central al revelar -->
+  <div id="flash-result" class="flash-result" aria-live="assertive" aria-atomic="true">
+    <p class="flash-text" id="flashText"></p>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  <script src="script.js"></script>
+</body>
+</html>
